@@ -1,0 +1,52 @@
+int led = D6;
+
+void setup()
+{
+	Serial.begin(9600);
+	pinMode(led, OUTPUT);
+	pinMode(D4, OUTPUT);
+	pinMode(D3, OUTPUT);
+
+	Particle.subscribe("Deakin_RIOT_SIT210_Photon_Buddy", wave);
+
+}
+
+void loop()
+{
+
+}
+
+
+void wave(const char *event, const char *data)
+{
+
+    if((String(data)).compareTo("wave") == 0) {
+     	digitalWrite(led, HIGH);
+    	    delay(1000);
+		digitalWrite(led, LOW);
+			delay(1000);
+		digitalWrite(led, HIGH);
+			delay(1000);
+		digitalWrite(led, LOW);
+			delay(1000);
+		digitalWrite(led, HIGH);
+			delay(1000);
+		digitalWrite(led, LOW);
+			delay(1000);
+    }
+    else if((String(data)).compareTo("pat") == 0) {
+     	digitalWrite(led, HIGH);
+    	    delay(100);
+		digitalWrite(led, LOW);
+			delay(100);
+		digitalWrite(led, HIGH);
+			delay(100);
+			digitalWrite(led, LOW);
+			delay(100);
+
+    }
+    else {
+        
+    }
+	
+}
